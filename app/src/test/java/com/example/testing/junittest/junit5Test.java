@@ -1,8 +1,6 @@
 package com.example.testing.junittest;
 
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -15,28 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 /**
- * 1 测试环境done
+ * 1 Junit5测试环境done
  * 2 lambda表达式 done
  */
-public class junit5Test {
-    private MainActivity mainActivity = new MainActivity();
 
-    @BeforeAll
-    static void setUp() {
-        System.out.println("beforAll");
-    }
-
-    @AfterAll
-    static void tearDown() {
-        System.out.println("afterAll");
-    }
+public class junit5Test extends BaseCase {
+    private Calculator calculator = new Calculator();
 
     @Test
-    void testAdd() {
-        assertAll("testAdd",
-                () -> assertEquals(mainActivity.add(1, 1), 2),
-                () -> assertEquals(mainActivity.add(1, 1), 2),
-                () -> assertEquals(mainActivity.add(1, 1), 2));
+    void testCalculator() {
+        assertAll("testCalculator",
+                () -> assertEquals(calculator.add(1, 1), 2),
+                () -> assertEquals(calculator.subtract(1, 1), 0),
+                () -> assertEquals(calculator.multiply(1, 1), 1),
+                () -> assertEquals(calculator.divide(1, 1), 1),
+                () -> assertEquals(calculator.count, 4));
     }
 
 }
